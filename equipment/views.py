@@ -37,6 +37,9 @@ class EquipmentUpdate(UpdateView):
     'month_rate',
     'retail_price'
     ]
+    # success_url= '/equipment/equipment'
+
+
 
 
 class EquipmentDelete(DeleteView):
@@ -70,6 +73,8 @@ class VendorUpdate(UpdateView):
     'email',
     'phone',
     ]
+    # success_url= '/equipment/vendor'
+
 
 class VendorDelete(DeleteView):
     model = Vendor
@@ -100,6 +105,8 @@ class CategoryUpdate(UpdateView):
     fields = [
     'name',
     ]
+    # success_url= '/equipment/category'
+
 
 class CategoryDelete(DeleteView):
     model = Category

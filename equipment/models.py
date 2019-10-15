@@ -16,7 +16,8 @@ class Equipment(models.Model):
     retail_price = models.FloatField(default = 0)
     def __str__(self):
         return self.name
-
+    def get_absolute_url(self):
+        return u'/equipment/category/%d' % self.id
 
 
 

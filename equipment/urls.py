@@ -32,9 +32,9 @@ urlpatterns = [
     context_object_name = 'total_category_list'
     ), name='category_list'),
     path('category/<int:pk>',CategoryDetail.as_view(), name='category_detail'),
-path('category/create', CategoryCreate.as_view(), name='category_create'),
-path('category/<int:pk>/edit',CategoryUpdate.as_view(), name='category_update'),
-path('category/<int:pk>/delete',CategoryDelete.as_view(), name='category_confirm_delete'),
+    path('category/create', CategoryCreate.as_view(), name='category_create'),
+    path('category/<int:pk>/edit',CategoryUpdate.as_view(), name='category_update'),
+    path('category/<int:pk>/delete',CategoryDelete.as_view(), name='category_confirm_delete'),
 
 
 
