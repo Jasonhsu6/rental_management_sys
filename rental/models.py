@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Rental(models.Model):
-    job = models.ForeignKey('Job', on_delete = models.SET_NULL, null=True)
+    job = models.ForeignKey('Job', related_name='rentals', on_delete = models.SET_NULL, null=True)
     equipment = models.OneToOneField(Equipment, on_delete = models.SET_NULL, null=True)
     # equipment = models.ForeignKey(Equipment, on_delete = models.SET_NULL, null=True)
 

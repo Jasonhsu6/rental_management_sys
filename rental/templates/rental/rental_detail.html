@@ -1,0 +1,16 @@
+  {% extends 'base.html'%}
+      {% block title %}
+      {{ rental.name }}
+      {% endblock %}
+      {%block content%}
+    <p>Created: {{ rental.entered_date }}</p>
+    <p>Equipment rented: <a href="{% url 'equipment:equipment_detail' rental.equipment.id%}">{{ rental.equipment }}</a></p>
+    <p>Received date: {{ rental.received_date }}</p>
+    <p>Entered via: {{ rental.entered_via }}</p>
+    <p>Estimated return date: {{ rental.return_date }}</p>
+    <p>Buy or rent: {{ rental.buy_or_rent }}</p>
+    <p>Comments: {{ rental.comments }}</p>
+    <p>Job: </p>
+    <br>
+    <li> <a href="{% url 'rental:job_detail' rental.job.id%}">{{rental.job.id}}</a> </li>
+    {% endblock%}
