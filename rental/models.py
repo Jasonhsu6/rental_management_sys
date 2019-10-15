@@ -12,7 +12,7 @@ class Rental(models.Model):
     received_date = models.DateTimeField(null = True, blank = True)
     return_date = models.DateTimeField(null=True, blank=True)
     buy_or_rent = models.CharField(max_length = 4, choices = [('Buy', 'Buy'), ('Rent', 'Rent')])
-    comments = models.TextField(max_length = 140)
+    comments = models.TextField(max_length = 140, null=True)
     entered_via = models.CharField(max_length = 2,
                                    choices = [('O', 'Order'),('I','Invoice'),('R','Rental Slip')])
 
@@ -28,5 +28,3 @@ class Job(models.Model):
     PO_num = models.CharField(max_length = 10)
     def __str__(self):
         return self.name
-
-

@@ -19,10 +19,13 @@ class Equipment(models.Model):
 
 
 
+
 class Category(models.Model):
     name = models.CharField(max_length = 100, unique = True)
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return u'/equipment/category/%d' % self.id
 
 class Vendor(models.Model):
     name = models.CharField(max_length = 20, unique=True)
@@ -31,3 +34,6 @@ class Vendor(models.Model):
     phone = models.CharField(max_length = 11)
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return u'/equipment/vendor  /%d' % self.id
