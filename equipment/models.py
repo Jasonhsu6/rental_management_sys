@@ -36,4 +36,4 @@ class Vendor(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return u'/equipment/vendor  /%d' % self.id
+        return u'/equipment/vendor/%d' % self.id

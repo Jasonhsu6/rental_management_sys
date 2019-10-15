@@ -19,7 +19,7 @@ class EquipmentCreate(CreateView):
     template_name = 'equipment/forms.html'
     form_class = EquipmentForm
 
-    success_url= '/equipment/'
+    success_url= '/equipment/equipment'
     def form_valid(self, form):
 
         return super(EquipmentCreate, self).form_valid(form)
@@ -41,4 +41,66 @@ class EquipmentUpdate(UpdateView):
 
 class EquipmentDelete(DeleteView):
     model = Equipment
+    success_url = '../'
+
+class VendorDetail(DetailView):
+    model = Vendor
+    template_name = 'vendor/vendor_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(VendorDetail, self).get_context_data(**kwargs)
+        return context
+
+class VendorCreate(CreateView):
+    model = Vendor
+    template_name = 'equipment/forms.html'
+    form_class = VendorForm
+
+    success_url= '/equipment/vendor'
+    def form_valid(self, form):
+
+        return super(VendorCreate, self).form_valid(form)
+
+class VendorUpdate(UpdateView):
+    model = Vendor
+    template_name = 'equipment/forms.html'
+    fields = [
+    'name',
+    'address',
+    'email',
+    'phone',
+    ]
+
+class VendorDelete(DeleteView):
+    model = Vendor
+    success_url = '../'
+
+
+class CategoryDetail(DetailView):
+    model = Category
+    template_name = 'category/category_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryDetail, self).get_context_data(**kwargs)
+        return context
+
+class CategoryCreate(CreateView):
+    model = Category
+    template_name = 'equipment/forms.html'
+    form_class = CategoryForm
+
+    success_url= '/equipment/category'
+    def form_valid(self, form):
+
+        return super(CategoryCreate, self).form_valid(form)
+
+class CategoryUpdate(UpdateView):
+    model = Category
+    template_name = 'equipment/forms.html'
+    fields = [
+    'name',
+    ]
+
+class CategoryDelete(DeleteView):
+    model = Category
     success_url = '../'
