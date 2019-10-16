@@ -15,7 +15,7 @@ class EquipmentForm(ModelForm):
         'month_rate',
         'retail_price'
         ]
-        help_text= "Equipment"
+        localize = True
 
 class CategoryForm(ModelForm):
     class Meta:

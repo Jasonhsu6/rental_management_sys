@@ -12,5 +12,11 @@
     <p>Comments: {{ rental.comments }}</p>
     <p>Job: </p>
     <br>
-    <li> <a href="{% url 'rental:job_detail' rental.job.id%}">{{rental.job.id}}</a> </li>
+    {%if rental.job.id%}
+    <li>
+      <a href="{% url 'rental:job_detail' rental.job.id%}">{{rental.job.id}}</a>
+    </li>
+    {%else%}
+    No Jobs Assigned
+    {%endif%}
   {% endblock%}

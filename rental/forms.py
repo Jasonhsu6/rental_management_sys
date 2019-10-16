@@ -1,5 +1,7 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, DateTimeInput
 from .models import Rental, Job
+from django.contrib.admin import widgets
+
 
 class RentalForm(ModelForm):
     class Meta:
@@ -13,6 +15,10 @@ class RentalForm(ModelForm):
             'entered_via',
             'comments',
         ]
+
+        widgets = {
+        'received_date': widgets.AdminSplitDateTime
+        }
 
 class JobForm(ModelForm):
     class Meta:
