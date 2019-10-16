@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.views.generic import ListView
 
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .forms import *
@@ -53,7 +54,22 @@ class RentalDelete(PermissionRequiredMixin, DeleteView):
     model = Rental
     success_url = '/rental/rental'
 
+def rental_search(request):
+    query = request.GET.get('search')
+    if query:
+        # return Rental.objects.filter(job__project_manager__username__contains=query)
+        return Rental.objects.filter(equipment__category__name__contains=query)
 
+    else:
+        return Rental.objects.all()
+
+class RentalList(LoginRequiredMixin, ListView):
+    template_name='rental/rental_list.html'
+    context_object_name='rental_list'
+    model= Rental
+    def get_queryset(self):
+        return rental_search(self.request)
+    # queryset = rental_search
 
 
 class JobDetail(LoginRequiredMixin,DetailView):

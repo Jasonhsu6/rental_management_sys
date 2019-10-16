@@ -10,11 +10,7 @@ app_name='rental'
 urlpatterns = [
     path('', views.index),
 
-    path('rental/', ListView.as_view(
-        queryset=Rental.objects.all(),
-        template_name='rental/rental_list.html',
-        context_object_name='rental_list'
-    ), name='rental_list'),
+    path('rental/', RentalList.as_view(), name='rental_list'),
     path('rental/<int:pk>/', RentalDetail.as_view(), name='rental_detail'),
     path('rental/create/', RentalCreate.as_view(), name='rental_create'),
     path('rental/<int:pk>/edit/', RentalUpdate.as_view(), name='rental_update'),

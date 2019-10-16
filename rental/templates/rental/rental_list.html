@@ -3,11 +3,14 @@
 Rental
     {% endblock %}
   {% block content%}
+  <form name="myform" method="GET" value={{ request.GET.q }}>
+    <input type="text" name="search" placeholder="Search" />
+</form>
+
     {%for rent in rental_list %}
     <ul>
       <li><a href="{% url 'rental:rental_detail' rent.id %}">{{rent.id}}</a></li>
     </ul>
-
     {% endfor %}
 
 {% endblock%}
