@@ -6,6 +6,9 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from .forms import *
 
+def index(request):
+    return render(request, 'EquipmentNavigate.html')
+
 class EquipmentDetail(LoginRequiredMixin, DetailView):
     permission_denied_message = 'You must log in first'
     model = Equipment

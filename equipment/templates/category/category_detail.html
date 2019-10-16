@@ -1,4 +1,10 @@
 {% extends 'base.html'%}
-  {% block title %}
-    {{category.name}}
-  {% endblock %}
+    {% block title %}
+        {{ category.name }}
+    {% endblock %}
+  {% block content%}
+    Info about {{ category.name }} :
+
+    <p>Name: {{category.name}}</p>
+
+{% endblock%}

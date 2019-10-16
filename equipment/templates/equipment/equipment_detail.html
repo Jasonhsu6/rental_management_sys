@@ -1,11 +1,11 @@
 {% extends 'base.html'%}
     {% block title %}
-{{ equipment.name }}
+        {{ equipment.name }}
     {% endblock %}
   {% block content%}
+    Info about {{ equipment.name }} :
 
-
-    Vendor: {{equipment.vendor}}
-    Category: {{equipment.category}}
+    <p>Vendor: {{equipment.vendor}}</p>
+      <p>Category: {{equipment.category}}</p>
 
 {% endblock%}

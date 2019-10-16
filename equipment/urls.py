@@ -1,11 +1,15 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import ListView
+
+from equipment import views
 from . views import *
 from .models import Equipment, Vendor, Category
 
 app_name= 'equipment'
 urlpatterns = [
+    path('', views.index),
+
     path('equipment/', ListView.as_view(
     queryset = Equipment.objects.all(),
     template_name='equipment/equipment_list.html',

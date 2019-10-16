@@ -9,6 +9,9 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .forms import *
 
 
+def index(request):
+    return render(request, 'RentalNavigate.html')
+
 class RentalDetail(LoginRequiredMixin, DetailView):
     model = Rental
     template_name = 'rental/rental_detail.html'
