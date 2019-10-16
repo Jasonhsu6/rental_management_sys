@@ -5,7 +5,7 @@
   {% block content%}
     Info about {{ equipment.name }} :
 
-    <p>Vendor: {{equipment.vendor}}</p>
-      <p>Category: {{equipment.category}}</p>
-
+    <p>Vendor: <a href="{% url 'equipment:vendor_detail' equipment.vendor.id %}">{{equipment.vendor}}</a></p>
+      <p>Category: <a href="{% url 'equipment:category_detail' equipment.category.id %}">{{equipment.category}}</a></p>
+      
 {% endblock%}

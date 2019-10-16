@@ -56,6 +56,7 @@ class RentalDelete(PermissionRequiredMixin, DeleteView):
 
 def rental_search(request):
     query = request.GET.get('search')
+    
     if query:
         # return Rental.objects.filter(job__project_manager__username__contains=query)
         return Rental.objects.filter(equipment__category__name__contains=query)

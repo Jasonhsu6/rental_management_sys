@@ -6,5 +6,7 @@
     Info about {{ category.name }} :
 
     <p>Name: {{category.name}}</p>
-
+    {% for equipment in category.equipments.all %}
+    <li><a href="{% url 'equipment:equipment_detail' equipment.id%}">{{equipment.id}}</a></li>
+    {% endfor %}
 {% endblock%}
