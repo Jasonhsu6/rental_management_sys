@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{% static "style/base.css" %}" />
-    <title>{% block title %}MyRestaurants by MyRecommentdations.org{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 <div id="header">
@@ -15,7 +15,7 @@
     {% endblock %}
 </div>
 <div id="sidebar">
-    {% block sidebar %}<ul><li><a href="/rental/rental/">Home</a></li></ul>{% endblock %}
+    {% block sidebar %}<a href="/">Home</a>{% endblock %}
 </div>
 <div id="content">
     {% block content %}

@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>{{vendor.name}}</title>
-  </head>
-  <body>
+{% extends 'base.html'%}
+    {% block title %}
+        {{ vendor.name }}
+    {% endblock %}
+  {% block content%}
+      <head>
+        Info about {{ vendor.name }}:
+      </head>
 
-  </body>
-</html>
+    <p>{{vendor.name}}</p>
+    <p>{{vendor.address}}</p>
+    <p>{{vendor.email}}</p>
+    <p>{{vendor.phone}}</p>
+
+{% endblock%}

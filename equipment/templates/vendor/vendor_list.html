@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Vendors</title>
-  </head>
-  <body>
+{% extends 'base.html'%}
+    {% block title %}
+        Vendors
+    {% endblock %}
+  {% block content%}
+
     {%for item in total_vendor_list %}
     <ul>
       <li><a href="{% url 'equipment:vendor_detail' item.id %}">{{item.name}}</a></li>
     </ul>
 
     {% endfor %}
-
-  </body>
-</html>
+{% endblock %}

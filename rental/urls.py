@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import ListView
+
+from rental import views
 from . views import *
 from .models import *
 
 app_name='rental'
 urlpatterns = [
+    path('', views.index),
 
     path('rental/', ListView.as_view(
         queryset=Rental.objects.all(),
