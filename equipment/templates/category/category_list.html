@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Categories</title>
-  </head>
-  <body>
+{% extends 'base.html'%}
+    {% block title %}
+Categories
+    {% endblock %}
+  {% block content%}
+
     {%for item in total_category_list %}
     <ul>
       <li><a href="{% url 'equipment:category_detail' item.id %}">{{item.name}}</a></li>
     </ul>
 
     {% endfor %}
-
-  </body>
-</html>
+{% endblock %}

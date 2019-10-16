@@ -71,6 +71,7 @@ class JobCreate(PermissionRequiredMixin,CreateView):
     success_url= '/rental/job'
     def form_valid(self, form):
 
+        form.instance.project_manager = self.request.user
         return super(JobCreate, self).form_valid(form)
 
 
