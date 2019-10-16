@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Equipment</title>
-  </head>
-  <body>
+{% extends 'base.html'%}
+    {% block title %}
+Equipment
+    {% endblock %}
+  {% block content%}
+
     {%for item in total_equipment_list %}
     <ul>
       <li><a href="{% url 'equipment:equipment_detail' item.id %}">{{item.name}}</a></li>
     </ul>
 
     {% endfor %}
-
-  </body>
-</html>
+{% endblock %}

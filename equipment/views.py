@@ -43,6 +43,8 @@ class EquipmentUpdate(PermissionRequiredMixin, UpdateView):
     'month_rate',
     'retail_price'
     ]
+    help_text= "Equipment"
+
     # success_url= '/equipment/equipment'
 
 

@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ equipment.name }}</title>
-  </head>
-  <body>
+{% extends 'base.html'%}
+    {% block title %}
+{{ equipment.name }}
+    {% endblock %}
+  {% block content%}
+
 
     Vendor: {{equipment.vendor}}
     Category: {{equipment.category}}
 
-  </body>
-</html>
+{% endblock%}
