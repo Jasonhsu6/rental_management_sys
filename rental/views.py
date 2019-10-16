@@ -53,7 +53,7 @@ class RentalDelete(PermissionRequiredMixin, DeleteView):
 
 
 
-class JobDetail(DetailView):
+class JobDetail(LoginRequiredMixin,DetailView):
     model = Job
     template_name = 'job/job_detail.html'
 
@@ -62,9 +62,10 @@ class JobDetail(DetailView):
         return context
 
 
-class JobCreate(CreateView):
+class JobCreate(PermissionRequiredMixin,CreateView):
     model = Job
     template_name = 'rental/forms.html'
+    permission_required = 'jobs.can_create'
     form_class = JobForm
 
     success_url= '/rental/job'
@@ -73,9 +74,11 @@ class JobCreate(CreateView):
         return super(JobCreate, self).form_valid(form)
 
 
-class JobUpdate(UpdateView):
+class JobUpdate(PermissionRequiredMixin,UpdateView):
     model = Job
     template_name = 'rental/forms.html'
+    permission_required = 'jobs.can_update'
+
     fields = [
         'name',
         'site',
@@ -86,7 +89,9 @@ class JobUpdate(UpdateView):
     success_url = '/rental/job'
 
 
-class JobDelete(DeleteView):
+class JobDelete(PermissionRequiredMixin,DeleteView):
     model = Job
+    permission_required = 'jobs.can_remove'
+
     success_url = '/rental/job'
     template_name = 'rental/rental_confirm_delete.html'
