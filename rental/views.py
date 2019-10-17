@@ -22,7 +22,7 @@ class RentalDetail(LoginRequiredMixin, DetailView):
         return context
 
 class RentalCreate(PermissionRequiredMixin ,CreateView):
-    permission_required = 'rentals.can_create'
+    permission_required = 'rental.add_job'
     model = Rental
     template_name = 'rental/forms.html'
     form_class = RentalForm
@@ -34,7 +34,7 @@ class RentalCreate(PermissionRequiredMixin ,CreateView):
 
 
 class RentalUpdate(PermissionRequiredMixin, UpdateView):
-    permission_required = 'rentals.can_update'
+    permission_required = 'rental.change_rental'
     model = Rental
     template_name = 'rental/forms.html'
     fields = [
@@ -50,13 +50,13 @@ class RentalUpdate(PermissionRequiredMixin, UpdateView):
 
 
 class RentalDelete(PermissionRequiredMixin, DeleteView):
-    permission_required = 'rentals.can_remove'
+    permission_required = 'rental.delete_rental'
     model = Rental
     success_url = '/rental/rental'
 
 def rental_search(request):
     query = request.GET.get('search')
-    
+
     if query:
         # return Rental.objects.filter(job__project_manager__username__contains=query)
         return Rental.objects.filter(equipment__category__name__contains=query)
@@ -85,7 +85,7 @@ class JobDetail(LoginRequiredMixin,DetailView):
 class JobCreate(PermissionRequiredMixin,CreateView):
     model = Job
     template_name = 'rental/forms.html'
-    permission_required = 'jobs.can_create'
+    permission_required = 'rental.add_job'
     form_class = JobForm
 
     success_url= '/rental/job'
@@ -98,7 +98,7 @@ class JobCreate(PermissionRequiredMixin,CreateView):
 class JobUpdate(PermissionRequiredMixin,UpdateView):
     model = Job
     template_name = 'rental/forms.html'
-    permission_required = 'jobs.can_update'
+    permission_required = 'rental.change_job'
 
     fields = [
         'name',
@@ -112,7 +112,7 @@ class JobUpdate(PermissionRequiredMixin,UpdateView):
 
 class JobDelete(PermissionRequiredMixin,DeleteView):
     model = Job
-    permission_required = 'jobs.can_remove'
+    permission_required = 'rental.delete_job'
 
     success_url = '/rental/job'
     template_name = 'rental/rental_confirm_delete.html'
