@@ -20,7 +20,7 @@ class EquipmentDetail(LoginRequiredMixin, DetailView):
 
 
 class EquipmentCreate(PermissionRequiredMixin, CreateView):
-    permission_required = 'equipments.can_create'
+    permission_required = 'equipment.add_equipment'
     permission_denied_message = "You are not allowed to create a new equipment"
     model = Equipment
     template_name = 'equipment/forms.html'
@@ -33,7 +33,7 @@ class EquipmentCreate(PermissionRequiredMixin, CreateView):
 
 
 class EquipmentUpdate(PermissionRequiredMixin, UpdateView):
-    permission_required = 'equipments.can_update'
+    permission_required = 'equipment.change_equipment'
     permission_denied_message = "You are not allowed to update a new equipment"
     model = Equipment
     template_name = 'equipment/forms.html'
@@ -54,7 +54,7 @@ class EquipmentUpdate(PermissionRequiredMixin, UpdateView):
 
 
 class EquipmentDelete(PermissionRequiredMixin, DeleteView):
-    permission_required = 'equipments.can_remove'
+    permission_required = 'equipment.delete_equipment'
     permission_denied_message = 'You cannot delete equipment'
     model = Equipment
     success_url = '../'
@@ -70,7 +70,7 @@ class VendorDetail(LoginRequiredMixin, DetailView):
 
 class VendorCreate(PermissionRequiredMixin, CreateView):
     permission_denied_message = 'You cannot create a new vendor'
-    permission_required = 'vendors.can_create'
+    permission_required = 'equipment.add_vendor'
     model = Vendor
     template_name = 'equipment/forms.html'
     form_class = VendorForm
@@ -81,7 +81,7 @@ class VendorCreate(PermissionRequiredMixin, CreateView):
         return super(VendorCreate, self).form_valid(form)
 
 class VendorUpdate(PermissionRequiredMixin, UpdateView):
-    permission_required = 'vendors.can_update'
+    permission_required = 'equipment.change_vendor'
     permission_denied_message = 'You cannot update vendor'
     model = Vendor
     template_name = 'equipment/forms.html'
@@ -96,7 +96,7 @@ class VendorUpdate(PermissionRequiredMixin, UpdateView):
 
 class VendorDelete(PermissionRequiredMixin, DeleteView):
     permission_denied_message = 'You cannot delete vendor information'
-    permission_required = 'vendors.can_delete'
+    permission_required = 'equipment.delete_vendor'
     model = Vendor
     success_url = '../'
 
@@ -112,7 +112,7 @@ class CategoryDetail(LoginRequiredMixin, DetailView):
 
 class CategoryCreate(PermissionRequiredMixin, CreateView):
     permission_denied_message = 'You are not allowed to create a category'
-    permission_required = 'categorys.can_create'
+    permission_required = 'equipment.add_category'
     model = Category
     template_name = 'equipment/forms.html'
     form_class = CategoryForm
@@ -123,7 +123,7 @@ class CategoryCreate(PermissionRequiredMixin, CreateView):
         return super(CategoryCreate, self).form_valid(form)
 
 class CategoryUpdate(PermissionRequiredMixin, UpdateView):
-    permission_required = 'categorys.can_update'
+    permission_required = 'equipment.change_category'
     permission_denied_message = 'You cannot update a category'
     model = Category
     template_name = 'equipment/forms.html'
@@ -135,6 +135,6 @@ class CategoryUpdate(PermissionRequiredMixin, UpdateView):
 
 class CategoryDelete(PermissionRequiredMixin, DeleteView):
     permission_denied_message = 'You are not allowed to delete a category'
-    permission_required = 'categorys.can_remove'
+    permission_required = 'equipment.delete_category'
     model = Category
     success_url = '../'
