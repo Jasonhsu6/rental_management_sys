@@ -16,9 +16,6 @@ class RentalForm(ModelForm):
             'comments',
         ]
 
-        widgets = {
-        'received_date': widgets.AdminSplitDateTime
-        }
 
 class JobForm(ModelForm):
     class Meta:

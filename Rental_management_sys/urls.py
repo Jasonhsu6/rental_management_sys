@@ -23,9 +23,13 @@ urlpatterns = [
     path('equipment/',include('equipment.urls','equipment')),
     path('rental/', include('rental.urls', 'rental')),
     path('accounts/',include('django.contrib.auth.urls')),
+<<<<<<< HEAD
 # <<<<<<< HEAD
     path('accounts/', include('signup.urls', 'signup')),
 # =======
 #     path('signin/', register)
 # >>>>>>> 33c1eb452f33419e85fbd20e0b4ba4c94d27c6b2
+=======
+    path('signin/', register, name='signin')
+>>>>>>> acfc40f71c9fbe03555eab2b36a321c3eea7c3ef
 ]

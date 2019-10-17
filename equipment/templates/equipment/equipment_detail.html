@@ -1,11 +1,28 @@
 {% extends 'base.html'%}
     {% block title %}
-        {{ equipment.name }}
+    {{ equipment.name }} {{ equipment.serial_number }}
     {% endblock %}
+    {% block sidebar%}
+
+    {% if user.groups.all.0.name == 'moderator' %}
+
+    <a href="{% url 'equipment:equipment_update' equipment.id%}">Edit {{equipment.id}}</a>
+    <a href="{% url 'equipment:equipment_confirm_delete' equipment.id%}">Delete {{equipment.id}}</a>
+  {%endif%}
+  <a href="{% url 'equipment:equipment_list'%}">Back to Equipments</a>
+
+  {%endblock%}
   {% block content%}
     Info about {{ equipment.name }} :
 
     <p>Vendor: <a href="{% url 'equipment:vendor_detail' equipment.vendor.id %}">{{equipment.vendor}}</a></p>
       <p>Category: <a href="{% url 'equipment:category_detail' equipment.category.id %}">{{equipment.category}}</a></p>
-      
+<p>Serial Number: {{equipment.serial_number}}</p>
+
+<p>Is Available: {{equipment.available}}</p>
+<p>Daily Rate: {{equipment.day_rate}}</p>
+<p>Weekly Rate: {{equipment.week_rate}}</p>
+<p>Month Rate: {{equipment.month_rate}}</p>
+<p>Retail Price: {{equipment.retail_price}}</p>
+
 {% endblock%}

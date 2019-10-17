@@ -2,6 +2,14 @@
     {% block title %}
         {{ vendor.name }}
     {% endblock %}
+    {% block sidebar%}
+    {% if user.groups.all.0.name == 'moderator' %}
+
+    <a href="{% url 'equipment:vendor_update' vendor.id%}">Edit {{vendor.id}}</a>
+    <a href="{% url 'equipment:vendor_confirm_delete' vendor.id%}">Delete {{vendor.id}}</a>
+  {%endif%}
+  <a href="{% url 'equipment:vendor_list'%}">Back to Vendors</a>
+  {%endblock%}
   {% block content%}
       <head>
         Info about {{ vendor.name }}:

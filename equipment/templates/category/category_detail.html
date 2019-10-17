@@ -2,6 +2,16 @@
     {% block title %}
         {{ category.name }}
     {% endblock %}
+    {% block sidebar%}
+
+    {% if user.groups.all.0.name == 'moderator' %}
+
+    <a href="{% url 'equipment:category_update' category.id%}">Edit {{category.id}}</a>
+    <a href="{% url 'equipment:category_confirm_delete' category.id%}">Delete {{category.id}}</a>
+  {%endif%}
+  <a href="{% url 'equipment:category_list'%}">Back to Categories</a>
+
+  {%endblock%}
   {% block content%}
     Info about {{ category.name }} :
 
