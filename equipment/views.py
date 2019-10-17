@@ -48,7 +48,7 @@ class EquipmentUpdate(PermissionRequiredMixin, UpdateView):
     ]
     help_text= "Equipment"
 
-    # success_url= '/equipment/equipment'
+    success_url= '/equipment/equipment'
 
 
 
@@ -91,7 +91,7 @@ class VendorUpdate(PermissionRequiredMixin, UpdateView):
     'email',
     'phone',
     ]
-    # success_url= '/equipment/vendor'
+    success_url= '/equipment/vendor'
 
 
 class VendorDelete(PermissionRequiredMixin, DeleteView):
@@ -130,7 +130,7 @@ class CategoryUpdate(PermissionRequiredMixin, UpdateView):
     fields = [
     'name',
     ]
-    # success_url= '/equipment/category'
+    success_url= '/equipment/category'
 
 
 class CategoryDelete(PermissionRequiredMixin, DeleteView):
