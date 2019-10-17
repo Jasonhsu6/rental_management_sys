@@ -2,6 +2,12 @@
     {% block title %}
 Equipment
     {% endblock %}
+    {% block sidebar%}
+    {% if user.groups.all.0.name == 'moderator' %}
+
+    <a href="{% url 'equipment:equipment_create'%}">New equipment</a>
+{%endif%}
+  {% endblock%}
   {% block content%}
 
     {%for item in total_equipment_list %}

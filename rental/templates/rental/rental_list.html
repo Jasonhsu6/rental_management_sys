@@ -2,6 +2,12 @@
     {% block title %}
 Rental
     {% endblock %}
+    {% block sidebar%}
+    {% if user.groups.all.0.name == 'moderator' %}
+
+    <a href="{% url 'rental:rental_create'%}">New Rental</a>
+{%endif%}
+    {% endblock %}
   {% block content%}
   <form name="myform" method="GET" value={{ request.GET.q }}>
     <input type="text" name="search" placeholder="Category Search" />

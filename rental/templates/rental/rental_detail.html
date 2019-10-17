@@ -1,7 +1,16 @@
   {% extends 'base.html'%}
   {% block title %}
-  {{ rental.name }}
+  Rental Number {{ rental.id }}
   {% endblock %}
+  {% block sidebar%}
+  {% if user.groups.all.0.name == 'moderator' %}
+
+  <a href="{% url 'rental:rental_update' rental.id%}">Edit {{rental.id}}</a>
+  <a href="{% url 'rental:rental_confirm_delete' rental.id%}">Delete {{rental.id}}</a>
+{%endif%}
+<a href="{% url 'rental:rental_list'%}">Back to Rentals</a>
+
+  {%endblock%}
   {%block content%}
     <p>Created: {{ rental.entered_date }}</p>
     <p>Equipment rented: <a href="{% url 'equipment:equipment_detail' rental.equipment.id%}">{{ rental.equipment }}</a></p>

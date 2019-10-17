@@ -2,6 +2,12 @@
     {% block title %}
     Jobs
     {% endblock %}
+    {% block sidebar%}
+    {% if user.groups.all.0.name == 'moderator' %}
+
+    <a href="{% url 'rental:job_create'%}">New Job</a>
+{%endif%}
+    {% endblock %}
     {%block content%}
     {%for job in job_list %}
     <div class="">

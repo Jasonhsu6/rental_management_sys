@@ -2,6 +2,12 @@
     {% block title %}
         Vendors
     {% endblock %}
+    {% block sidebar%}
+    {% if user.groups.all.0.name == 'moderator' %}
+
+    <a href="{% url 'equipment:vendor_create'%}">New Vendor</a>
+{%endif%}
+  {% endblock %}
   {% block content%}
 
     {%for item in total_vendor_list %}

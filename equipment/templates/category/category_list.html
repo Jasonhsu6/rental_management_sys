@@ -2,6 +2,13 @@
     {% block title %}
         Categories
     {% endblock %}
+
+    {% block sidebar%}
+    {% if user.groups.all.0.name == 'moderator' %}
+
+    <a href="{% url 'equipment:category_create'%}">New Category</a>
+{%endif%}
+{%endblock%}
   {% block content%}
 
     {%for item in total_category_list %}

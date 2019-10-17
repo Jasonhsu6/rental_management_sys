@@ -1,7 +1,15 @@
 {% extends 'base.html'%}
 {% block title %}
-{{ job.name }}
+Job {{ job.id }}: {{ job.name }}
 {% endblock %}
+{% block sidebar%}
+{% if user.groups.all.0.name == 'moderator' %}
+<a href="{% url 'rental:job_update' job.id%}">Edit {{job.id}}</a>
+<a href="{% url 'rental:job_confirm_delete' job.id%}">Delete {{job.id}}</a>
+{% endif %}
+<a href="{% url 'rental:job_list'%}">Back to Jobs</a>
+
+{%endblock%}
 {%block content%}
     <p>Job PO number: {{ job.PO_num }}</p>
     <p>Job name: {{ job.name }}</p>
@@ -10,6 +18,7 @@
     <p>Supervisor: {{ job.supervisor }}</p>
     <p>Active Job: {{ job.active }}</p>
     <div class="rentals">
+      <strong>ASSOCIATED RENTALS</strong>
       {% for rental in job.rentals.all %}
       <li><a href="{% url 'rental:rental_detail' rental.id%}">{{rental.id}}</a></li>
       {% endfor %}
