@@ -2,10 +2,12 @@ from django.shortcuts import render
 from .models import *
 from django.urls import reverse_lazy
 from django.views.generic import DetailView
+from django.contrib.auth.decorators import permission_required, login_required
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from .forms import *
 
+@login_required
 def index(request):
     return render(request, 'EquipmentNavigate.html')
 

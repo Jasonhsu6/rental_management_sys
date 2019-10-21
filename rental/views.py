@@ -9,7 +9,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .forms import *
 
-
+@login_required
 def index(request):
     return render(request, 'RentalNavigate.html')
 
@@ -19,6 +19,7 @@ class RentalDetail(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(RentalDetail, self).get_context_data(**kwargs)
+        print(context)
         return context
 
 class RentalCreate(PermissionRequiredMixin ,CreateView):
@@ -30,6 +31,8 @@ class RentalCreate(PermissionRequiredMixin ,CreateView):
     success_url= '/rental/rental'
     def form_valid(self, form):
         form.instance.user = self.request.user
+        print(form.instance.equipment)
+
         return super(RentalCreate, self).form_valid(form)
 
 
@@ -92,6 +95,7 @@ class JobCreate(PermissionRequiredMixin,CreateView):
     def form_valid(self, form):
 
         form.instance.project_manager = self.request.user
+        print(form.instance)
         return super(JobCreate, self).form_valid(form)
 
 
