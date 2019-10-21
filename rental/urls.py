@@ -16,11 +16,12 @@ urlpatterns = [
     path('rental/<int:pk>/edit/', RentalUpdate.as_view(), name='rental_update'),
     path('rental/<int:pk>/delete/', RentalDelete.as_view(), name='rental_confirm_delete'),
 
-    path('job/', ListView.as_view(
-        queryset=Job.objects.all(),
-        template_name='job/job_list.html',
-        context_object_name='job_list'
-    ), name='job_list'),
+    # path('job/', ListView.as_view(
+    #     queryset=Job.objects.all(),
+    #     template_name='job/job_list.html',
+    #     context_object_name='job_list'
+    # ), name='job_list'),
+    path('job/', JobList.as_view(), name='job_list'),
     path('job/<int:pk>/', JobDetail.as_view(), name='job_detail'),
     path('job/create/', JobCreate.as_view(), name='job_create'),
     path('job/<int:pk>/edit/', JobUpdate.as_view(), name='job_update'),

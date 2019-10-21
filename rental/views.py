@@ -75,6 +75,10 @@ class RentalList(LoginRequiredMixin, ListView):
         return rental_search(self.request)
     # queryset = rental_search
 
+class JobList(LoginRequiredMixin, ListView):
+    queryset=Job.objects.all()
+    template_name='job/job_list.html'
+    context_object_name='job_list'
 
 class JobDetail(LoginRequiredMixin,DetailView):
     model = Job

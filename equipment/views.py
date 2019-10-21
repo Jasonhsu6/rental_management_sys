@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.urls import reverse_lazy
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.contrib.auth.decorators import permission_required, login_required
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -52,14 +52,21 @@ class EquipmentUpdate(PermissionRequiredMixin, UpdateView):
 
     success_url= '/equipment/equipment'
 
-
-
+class EquipmentList(LoginRequiredMixin, ListView):
+    queryset = Equipment.objects.all()
+    template_name='equipment/equipment_list.html'
+    context_object_name = 'total_equipment_list'
 
 class EquipmentDelete(PermissionRequiredMixin, DeleteView):
     permission_required = 'equipment.delete_equipment'
     permission_denied_message = 'You cannot delete equipment'
     model = Equipment
     success_url = '../'
+
+class VendorList(LoginRequiredMixin, ListView):
+    queryset = Vendor.objects.all()
+    template_name='vendor/vendor_list.html'
+    context_object_name = 'total_vendor_list'
 
 class VendorDetail(LoginRequiredMixin, DetailView):
     permission_denied_message = 'You must login first'
@@ -101,6 +108,11 @@ class VendorDelete(PermissionRequiredMixin, DeleteView):
     permission_required = 'equipment.delete_vendor'
     model = Vendor
     success_url = '../'
+
+class CategoryList(LoginRequiredMixin, ListView):
+    queryset = Category.objects.all()
+    template_name='category/category_list.html'
+    context_object_name = 'total_category_list'
 
 
 class CategoryDetail(LoginRequiredMixin, DetailView):
