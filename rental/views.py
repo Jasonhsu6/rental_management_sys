@@ -23,7 +23,7 @@ class RentalDetail(LoginRequiredMixin, DetailView):
         return context
 
 class RentalCreate(PermissionRequiredMixin ,CreateView):
-    permission_required = 'rental.add_job'
+    permission_required = 'rental.add_rental'
     model = Rental
     template_name = 'rental/forms.html'
     form_class = RentalForm
